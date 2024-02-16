@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<GoodsServiceDbContext>(
     options =>
     {
-        
+        options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(GoodsServiceDbContext)));
     });
 
 var app = builder.Build();

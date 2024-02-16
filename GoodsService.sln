@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goods.API", "Goods.API\Good
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goods.Core", "Goods.Core\Goods.Core.csproj", "{5185A7E3-DC68-45DD-8C5B-4F5881303731}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goods.DataBase", "Goods.Services\Goods.DataBase.csproj", "{C4848B4F-3B3E-4EEF-8FDD-9EB3BB794CFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goods.Services", "Goods.Services\Goods.Services.csproj", "{C4848B4F-3B3E-4EEF-8FDD-9EB3BB794CFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goods.Services", "Goods.DataBase\Goods.Services.csproj", "{B3476803-8B71-4E4A-87BB-C553BAB68BBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goods.DataBase", "Goods.DataBase\Goods.DataBase.csproj", "{B3476803-8B71-4E4A-87BB-C553BAB68BBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
