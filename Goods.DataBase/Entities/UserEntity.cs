@@ -15,7 +15,7 @@ namespace Goods.DataBase.Entities
         public string Mail { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
 
-        public List<GoodEntity>? Goods { get; set; }
+        
 
     }
 }

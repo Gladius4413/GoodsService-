@@ -14,9 +14,7 @@ namespace Goods.DataBase.Configurations
         public void Configure(EntityTypeBuilder<GoodEntity> builder)
         {
             builder.HasKey(g => g.Id);
-            builder
-                .HasMany(u => u.Users)
-                .WithMany(g => g.Goods);
+           
         }
     }
 }

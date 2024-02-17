@@ -22,21 +22,6 @@ namespace Goods.DataBase.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("GoodEntityUserEntity", b =>
-                {
-                    b.Property<Guid>("GoodsId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("UsersId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("GoodsId", "UsersId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("GoodEntityUserEntity");
-                });
-
             modelBuilder.Entity("Goods.DataBase.Entities.GoodEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -84,21 +69,6 @@ namespace Goods.DataBase.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("GoodEntityUserEntity", b =>
-                {
-                    b.HasOne("Goods.DataBase.Entities.GoodEntity", null)
-                        .WithMany()
-                        .HasForeignKey("GoodsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Goods.DataBase.Entities.UserEntity", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

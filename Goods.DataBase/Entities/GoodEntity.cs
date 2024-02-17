@@ -14,7 +14,7 @@ namespace Goods.DataBase.Entities
 
         public string Description { get; set; } = string.Empty;
 
-        public List<UserEntity>? Users { get; set; }
+       
 
     }
 }

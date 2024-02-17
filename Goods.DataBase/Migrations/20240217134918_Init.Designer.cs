@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Goods.DataBase.Migrations
 {
     [DbContext(typeof(GoodsServiceDbContext))]
-    [Migration("20240216120620_initial")]
-    partial class initial
+    [Migration("20240217134918_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,21 +24,6 @@ namespace Goods.DataBase.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("GoodEntityUserEntity", b =>
-                {
-                    b.Property<Guid>("GoodsId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("UsersId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("GoodsId", "UsersId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("GoodEntityUserEntity");
-                });
 
             modelBuilder.Entity("Goods.DataBase.Entities.GoodEntity", b =>
                 {
@@ -87,21 +72,6 @@ namespace Goods.DataBase.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("GoodEntityUserEntity", b =>
-                {
-                    b.HasOne("Goods.DataBase.Entities.GoodEntity", null)
-                        .WithMany()
-                        .HasForeignKey("GoodsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Goods.DataBase.Entities.UserEntity", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
