@@ -24,7 +24,7 @@ namespace Goods.Core.Models
             Password = password;
         }
 
-        public static (User user, string Error) Create(Guid id, string name, string surname, string mail, string password)
+        public static (User User, string Error) Create(Guid id, string name, string surname, string mail, string password)
         {
             var error = string.Empty;
 

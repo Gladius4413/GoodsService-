@@ -16,6 +16,6 @@ namespace Goods.DataBase.Entities
         public string Password { get; set; } = string.Empty;
 
         
-
+        
     }
 }
