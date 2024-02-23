@@ -9,6 +9,7 @@ namespace Goods.DataBase.Configurations
         public void Configure(EntityTypeBuilder<UserEntity> builder)
         {
             builder.HasKey(u => u.Id);
+            
            
         }
     }

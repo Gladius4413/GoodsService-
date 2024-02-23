@@ -1,4 +1,5 @@
-﻿using Goods.Core.Models;
+﻿using Goods.Core.Abstractions;
+using Goods.Core.Models;
 using Goods.DataBase.Repositories;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Goods.Services.Services
 {
-    public class GoodsService
+    public class GoodsService : IGoodsService
     {
         private readonly IGoodRepository _goodRepository;
         public GoodsService(IGoodRepository repository) => _goodRepository = repository;

@@ -1,4 +1,5 @@
-﻿using Goods.Core.Models;
+﻿using Goods.Core.Abstractions;
+using Goods.Core.Models;
 using Goods.DataBase.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;

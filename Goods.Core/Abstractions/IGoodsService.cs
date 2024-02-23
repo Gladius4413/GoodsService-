@@ -2,12 +2,12 @@
 
 namespace Goods.Core.Abstractions
 {
-    public interface IGoodRepository
+    public interface IGoodsService
     {
         Task Create(Good good);
         Task Delete(Guid id);
-        Task<List<Good>> GetAll();
-        Task<Good?> GetById(Guid id);
+        Task<List<Good>> GetAllGoods();
+        Task<Good?> GetGoodsById(Guid id);
         Task Update(Guid id, string title, decimal price, string description);
     }
 }

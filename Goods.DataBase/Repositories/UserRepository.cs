@@ -1,4 +1,5 @@
-﻿using Goods.Core.Models;
+﻿using Goods.Core.Abstractions;
+using Goods.Core.Models;
 using Goods.DataBase.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,30 +15,35 @@ namespace Goods.DataBase.Repositories
         private readonly GoodsServiceDbContext _dbContext;
         public UserRepository(GoodsServiceDbContext dbContext) => _dbContext = dbContext;
 
-        public async Task<List<User>> GetAll()
+        public async Task<List<Users>> GetAll()
         {
             var userEntity = await _dbContext.User
                 .AsNoTracking()
                 .ToListAsync();
 
             var users = userEntity
-                .Select(u => User.Create(u.Id, u.Name, u.Surname, u.Mail, u.Password).User)
+                .Select(u => Users.Create(u.Id, u.Name, u.Surname, u.Mail, u.Password).User)
                 .ToList();
 
             return users;
         }
 
-        public async Task<User?> GetByEmail(string mail)
+        public async Task<Users?> GetByEmail(string mail)
         {
             var userEntity = await _dbContext.User
                 .AsNoTracking()
                 .FirstOrDefaultAsync(u => u.Mail.Equals(mail));
 
-            var user = User.Create(userEntity.Id, userEntity.Name, userEntity.Surname, userEntity.Mail, userEntity.Password).User;
+            if (userEntity == null)
+            {
+                return null;
+            }
+
+            var user = Users.Create(userEntity.Id, userEntity.Name, userEntity.Surname, userEntity.Mail, userEntity.Password).User;
 
             return user;
         }
-        public async Task Create(User user)
+        public async Task<Guid> Create(Users user)
         {
             var UserEntity = new UserEntity()
             {
@@ -50,25 +56,29 @@ namespace Goods.DataBase.Repositories
 
             await _dbContext.User.AddAsync(UserEntity);
             await _dbContext.SaveChangesAsync();
+
+            return user.Id;
         }
 
 
-        public async Task Update(Guid id, string name, string surname, string mail, string password)
+        public async Task<Guid> Update(Guid id, string name, string surname, string mail, string password)
         {
-            await _dbContext.User
+           await _dbContext.User
                   .Where(u => u.Id == id)
                   .ExecuteUpdateAsync(s =>
                   s.SetProperty(u => u.Name, name)
                   .SetProperty(u => u.Surname, surname)
                   .SetProperty(u => u.Mail, mail)
                   .SetProperty(u => u.Password, password));
-                  
+            return id;
         }
-        public async Task Delete(Guid id)
+        public async Task<Guid> Delete(Guid id)
         {
             await _dbContext.User
                   .Where(u => u.Id == id)
                   .ExecuteDeleteAsync();
+
+            return id;
         }
 
     }

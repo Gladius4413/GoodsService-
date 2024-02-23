@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Goods.Core.Models
 {
-    public class User
+    public class Users
     {
         public Guid Id { get;}
         public string Name { get;} = string.Empty;
 
         public string Surname { get;} = string.Empty;
+        
         public string Mail { get;} = string.Empty;
         public string Password { get;} = string.Empty;
 
-        public User(Guid id, string name, string surname, string mail, string password)
+        public Users(Guid id, string name, string surname, string mail, string password)
         {
             Id = id;
             Name = name;
@@ -24,7 +25,7 @@ namespace Goods.Core.Models
             Password = password;
         }
 
-        public static (User User, string Error) Create(Guid id, string name, string surname, string mail, string password)
+        public static (Users User, string Error) Create(Guid id, string name, string surname, string mail, string password)
         {
             var error = string.Empty;
 
@@ -32,7 +33,8 @@ namespace Goods.Core.Models
             {
                 error = "Error, check your data";
             }
-            var user = new User(id, name, surname, mail, password);
+
+            var user = new Users(id, name, surname, mail, password);
 
             return (user, error);
         }
